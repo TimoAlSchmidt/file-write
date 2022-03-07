@@ -1,4 +1,4 @@
-import yaml
+import yaml, os.path
 import tkinter as tk
 window = tk.Tk()
 
@@ -10,22 +10,33 @@ button.pack(pady = 20, padx = 20)
 switch = True
 window.config(bg="black")
 
+def logWrite(text):
+    #bruh
+    if not os.path.exists("actions.log"):
+        with open("actions.log", "a") as file:
+            file.write(text)
+            file.close()
+    else:
+        with open("actions.log", "a") as file:
+            file.write(text)
+            file.close()
+
+
+
 def toggleSwitch():
     global button
     global window
     global switch
-    file = open("actions.log", "a")
     if switch:
-        file.write("light is on\n")
+        logWrite("light is on\n")
         window.config(bg="yellow")
         button.config(text="Switch light off")
         switch = False
     else:
-        file.write("light is off\n")
+        logWrite("light is off\n")
         window.config(bg="black")
         button.config(text="Switch light on")
         switch = True
-    file.close()
 
 button.config(text="Switch light on", command=toggleSwitch)
 
