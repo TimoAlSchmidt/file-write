@@ -11,11 +11,11 @@ switch = True
 window.config(bg="black")
 
 def logWrite(text):
-    #bruh
+    #bruh   
     if not os.path.exists("actions.log"):
-        with open("actions.log", "a") as file:
-            file.write(text)
-            file.close()
+        file = open("actions.log", "x")
+        file.write(text)
+        file.close()
     else:
         with open("actions.log", "a") as file:
             file.write(text)
